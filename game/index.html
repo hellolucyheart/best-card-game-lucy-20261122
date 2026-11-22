@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bloom Clash — a petal-powered card duel</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">🌸 Bloom Clash</div>
+    <div class="top-meta">
+      <span id="turnLabel">Turn 1 — your move</span>
+      <span id="deckLabel">Deck 24</span>
+      <span id="discardLabel">Discard 0</span>
+    </div>
+    <div class="top-actions">
+      <button id="soundBtn" title="Mute (M)">🔊 Sound</button>
+      <button id="restartBtn" title="Restart (R)">↻ New duel</button>
+    </div>
+  </header>
+
+  <main class="table">
+    <section class="fighter enemy" id="enemyPanel">
+      <div class="portrait">🌵</div>
+      <div class="fighter-body">
+        <div class="fighter-name">Thorn, the Bramble King <span class="tag">AI rival</span></div>
+        <div class="hpbar"><div class="hpfill enemy-fill" id="enemyHpFill"></div><span id="enemyHpText"></span></div>
+        <div class="status-row" id="enemyStatus"></div>
+        <div class="mini-hand" id="enemyHand"></div>
+      </div>
+      <div class="intent" id="enemyIntent">…</div>
+    </section>
+
+    <section class="middle">
+      <div class="log" id="log" aria-live="polite"></div>
+      <div class="stage" id="stage">
+        <div class="played" id="playedCard"></div>
+        <div class="vs">⚔️</div>
+        <div class="played" id="playedEnemy"></div>
+      </div>
+    </section>
+
+    <section class="fighter player" id="playerPanel">
+      <div class="portrait">🌸</div>
+      <div class="fighter-body">
+        <div class="fighter-name">Sakura <span class="tag">you</span></div>
+        <div class="hpbar"><div class="hpfill player-fill" id="playerHpFill"></div><span id="playerHpText"></span></div>
+        <div class="status-row" id="playerStatus"></div>
+        <div class="energy" id="energyPips" title="Petals — energy to play cards"></div>
+      </div>
+      <button id="endTurnBtn" class="end-turn">End turn ⏎</button>
+    </section>
+
+    <section class="hand" id="hand" aria-label="Your hand"></section>
+    <p class="hint">Click a card or press 1–5 to play it · Space ends your turn · M mutes · R restarts</p>
+  </main>
+
+  <div class="overlay hidden" id="overlay">
+    <div class="overlay-card">
+      <div class="overlay-emoji" id="overlayEmoji">🌸</div>
+      <h1 id="overlayTitle">Victory!</h1>
+      <p id="overlayText"></p>
+      <div class="overlay-stats" id="overlayStats"></div>
+      <button id="againBtn" class="end-turn big">Play again</button>
+    </div>
+  </div>
+</div>
+<script type="module" src="src/boot.js"></script>
+</body>
+</html>
